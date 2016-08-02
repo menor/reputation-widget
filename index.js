@@ -1,10 +1,33 @@
-// Select svg based on browser language
 // get facility-id from params
+// Select svg based on browser language
 // call the api for the feedback rating
 // integrate the text in the svg
-// make the switchable color palette
 // change the color palette from a param
+// contain globals into an object
 // 'package' the code (base64 encoding of the svg?)
+
+// globals (put this in an object)
+var lang = navigator.language || navigator.userLanguage
+var palettes = {
+  darkBlue: {
+    medium: '#3E4862',
+    dark: '#333B4F',
+    darker: '#293140'
+  },
+  lightBlue: {
+    medium: '#00A7C4',
+    dark: '#018EA6',
+    darker: '#047D92'
+  },
+  yellow: {
+    medium: '#F8C150',
+    dark: '#D7A43B',
+    darker: '#B0842B'
+  }
+}
+
+var palette = palettes.lightBlue
+
 function ready(fn) {
   if (document.readyState != 'loading'){
     fn();
@@ -14,28 +37,8 @@ function ready(fn) {
 }
 
 function replaceElement() {
-  var a = document.getElementById('resmio-badge')
-  var palettes = {
-    darkBlue: {
-      medium: '#3E4862',
-      dark: '#333B4F',
-      darker: '#293140'
-    },
-    lightBlue: {
-      medium: '#00A7C4',
-      dark: '#018EA6',
-      darker: '#047D92'
-    },
-    yellow: {
-      medium: '#F8C150',
-      dark: '#D7A43B',
-      darker: '#B0842B'
-    }
-  }
-
-  var palette = palettes.lightBlue
-
-  a.innerHTML = (
+  var el = document.getElementById('resmio-badge')
+  el.innerHTML = (
     `<svg width="201" height="229" viewBox="4479 -920 201 229" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <rect id="a" x="15.543" y="124.148" width="172.751" height="40.153" rx="2"/>
@@ -94,6 +97,7 @@ function getJSON(url, cb) {
 function initialize() {
   // getFeedbackScore()
   replaceElement()
+  debugger
 }
 
 ready(initialize)
