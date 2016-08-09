@@ -7,7 +7,10 @@
 // 'package' the code (base64 encoding of the svg?)
 
 // globals (put this in an object)
+
+// getting the language does not work
 var lang = navigator.language || navigator.userLanguage
+
 var palettes = {
   darkBlue: {
     medium: '#3E4862',
@@ -26,8 +29,11 @@ var palettes = {
   }
 }
 
+// Next 2 values should be passed as params
+var facilityId = 'the-fish'
 var palette = palettes.lightBlue
 
+// Initialize function
 function ready(fn) {
   if (document.readyState != 'loading'){
     fn();
@@ -38,6 +44,9 @@ function ready(fn) {
 
 function replaceElement() {
   var el = document.getElementById('resmio-badge')
+  // The svg should come from a file depending on the language
+  // Still not sure how to do this, we can also put all the languages in the svg
+  // and show or hide the elements through css
   el.innerHTML = (
     `<svg width="201" height="229" viewBox="4479 -920 201 229" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
@@ -72,32 +81,42 @@ function replaceElement() {
   )
 }
 
-function getFeedbackScore() {
-  getJSON('/facility/' + facilityId + '/', function(err, res) {
-    if (err) {
-      return err
-    }
-      ServerActionCreators.availabilitiesLoaded(res.objects)
-    })
-}
-
-function getJSON(url, cb) {
-  const req = new XMLHttpRequest()
+function getFeedbackScore(cb) {
+  // This needs to call the feedback score API endpoint instead
+  var req = makeCORSRequest('https://api.resmio.com/v1/facility/' + facilityId + '/availability?date__gte=2016-03-01')
   req.onload = function onload() {
     if (req.status === 404) {
-      cb(new Error('not found'))
+      return new Error('not found')
     } else {
-      cb(null, JSON.parse(req.response))
+      cb(req.response)
     }
   }
-  req.open('GET', url)
   req.send()
 }
 
+// Adapted from the third party JS book
+function makeCORSRequest(url) {
+  if (typeof XMLHttpRequest === "undefined") {
+    return null;
+  }
+
+  var xhr = new XMLHttpRequest()
+  if ("withCredentials" in xhr) {                    // Browsers supporting CORS
+    xhr.open('GET', url, true)
+  }
+  else if (typeof XDomainRequest !== "undefined") {  // IE with CORS support
+    xhr = new XDomainRequest();
+    xhr.open('GET', url);
+  }
+  else {                                             // No CORS support
+    xhr = null
+  }
+  return xhr;
+}
+
 function initialize() {
-  // getFeedbackScore()
+  getFeedbackScore(function(res) { console.log(res)})
   replaceElement()
-  debugger
 }
 
 ready(initialize)
