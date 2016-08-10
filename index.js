@@ -129,13 +129,8 @@ var facilityId = 'the-fish'
 var palette = palettes.lightBlue
 
 // Initialize function
-function ready(fn) {
-  if (document.readyState != 'loading'){
-    fn();
-  } else {
-    document.addEventListener('DOMContentLoaded', fn);
-  }
-}
+// http://dustindiaz.com/smallest-domready-ever
+function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
 
 function replaceElement() {
   var el = document.getElementById('resmio-badge')
@@ -225,4 +220,4 @@ function initialize() {
   replaceElement()
 }
 
-ready(initialize)
+r(initialize)
