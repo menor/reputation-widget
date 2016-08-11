@@ -1,4 +1,3 @@
-// Adjust position of positive based on rating (edge cases <10% and 100%)
 // get facility-id from params
 // change the color palette from a param
 // call the api for the feedback rating
@@ -10,6 +9,7 @@
 
 // gets the OS language
 // we need to check if we are getting the lang as a parameter
+
 var lang = navigator.language || navigator.userLanguage
 lang = lang.substring(0,2)
 
@@ -34,27 +34,27 @@ var palettes = {
 var feedbackScore = '90'
 
 var translations = {
-  de: {
+  da: {
     headline: {
-      text: 'ZUFRIEDENHEIT',
-      x: '47'
+      text: 'TILFREDSHED',
+      x: '59'
     },
     subline: {
-      text: 'UNSERER GÄSTEN',
-      x: '37.247'
+      text: 'FRA VORES GÆSTER',
+      x: '41'
     },
     positive: {
       text: 'POSITIV',
     }
   },
-  du: {
+  de: {
     headline: {
-      text: 'TEVREDENHEID',
-      x: '47'
+      text: 'ZUFRIEDENHEIT',
+      x: '53'
     },
     subline: {
-      text: 'VAN ONZE GASTEN',
-      x: '37.247'
+      text: 'UNSERER GÄSTEN',
+      x: '46'
     },
     positive: {
       text: 'POSITIV',
@@ -62,12 +62,12 @@ var translations = {
   },
   en: {
     headline: {
-      text: 'SATISFACTION OF',
-      x: '47'
+      text: 'OUR GUEST',
+      x: '65'
     },
     subline: {
-      text: 'OUR GUESTS',
-      x: '61.247'
+      text: 'SATISFACTION',
+      x: '57'
     },
     positive: {
       text: 'POSITIVE',
@@ -75,12 +75,12 @@ var translations = {
   },
   es: {
     headline: {
-      text: 'SATISFACCION DE',
+      text: 'SATISFACCIÓN DE',
       x: '47'
     },
     subline: {
       text: 'NUESTROS CLIENTES',
-      x: '37.247'
+      x: '37'
     },
     positive: {
       text: 'POSITIVA',
@@ -93,20 +93,33 @@ var translations = {
     },
     subline: {
       text: 'NOS CLIENTS',
-      x: '37.247'
+      x: '61'
     },
     positive: {
       text: 'POSITIF',
     },
   },
+  nl: {
+    headline: {
+      text: 'TEVREDENHEID',
+      x: '55'
+    },
+    subline: {
+      text: 'VAN ONZE GASTEN',
+      x: '44'
+    },
+    positive: {
+      text: 'POSITIV',
+    }
+  },
   pt: {
     headline: {
       text: 'SATISFAÇÃO DOS',
-      x: '47'
+      x: '49'
     },
     subline: {
       text: 'NOSSOS CLIENTES',
-      x: '37.247'
+      x: '45'
     },
     positive: {
       text: 'POSITIVA',
@@ -115,7 +128,8 @@ var translations = {
 }
 
 // If we don't have a translation for the user language we default to english
-var texts = translations[lang] || translations['en']
+// var texts = translations[lang] || translations['en']
+var texts = translations['da']
 
 // Next 2 values should be passed as params
 var facilityId = 'the-fish'
