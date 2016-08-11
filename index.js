@@ -1,13 +1,10 @@
-// Include Open Sans
-// Test the font in browsers and mobile
-// Research Open Sans names and fallbacks
-// get facility-id from params
-// call the api for the feedback rating
 // Adjust position of positive based on rating (edge cases <10% and 100%)
+// get facility-id from params
 // change the color palette from a param
+// call the api for the feedback rating
 // contain globals into an object
 // Accesibility https://www.sitepoint.com/tips-accessible-svg/
-// 'package' the code (base64 encoding of the svg?)
+// 'package' the code
 
 // globals (put this in an object)
 
@@ -34,6 +31,8 @@ var palettes = {
   }
 }
 
+var feedbackScore = '90'
+
 var translations = {
   de: {
     headline: {
@@ -46,7 +45,6 @@ var translations = {
     },
     positive: {
       text: 'POSITIV',
-      x: '78.2223448'
     }
   },
   du: {
@@ -60,7 +58,6 @@ var translations = {
     },
     positive: {
       text: 'POSITIV',
-      x: '78.2223448'
     }
   },
   en: {
@@ -74,7 +71,6 @@ var translations = {
     },
     positive: {
       text: 'POSITIVE',
-      x:'80'
     },
   },
   es: {
@@ -88,7 +84,6 @@ var translations = {
     },
     positive: {
       text: 'POSITIVA',
-      x:'80'
     },
   },
   fr: {
@@ -102,7 +97,6 @@ var translations = {
     },
     positive: {
       text: 'POSITIF',
-      x:'78.2223448'
     },
   },
   pt: {
@@ -116,7 +110,6 @@ var translations = {
     },
     positive: {
       text: 'POSITIVA',
-      x:'78.2223448'
     },
   }
 }
@@ -126,7 +119,27 @@ var texts = translations[lang] || translations['en']
 
 // Next 2 values should be passed as params
 var facilityId = 'the-fish'
-var palette = palettes.lightBlue
+var palette = palettes.yellow
+
+// We calculate the X position of the percentage text here
+// Based on the length of the 2 strings
+var feedbackScoreLength = texts.positive.text.length + feedbackScore.length
+var feedbackScoreX
+
+switch (feedbackScoreLength) {
+  case 8:
+    feedbackScoreX = '44'
+    break
+  case 9:
+    feedbackScoreX = '37'
+    break
+  case 10:
+    feedbackScoreX = '30'
+    break
+  default:
+    feedbackScoreX = '22'
+    break
+}
 
 // Initialize function
 // http://dustindiaz.com/smallest-domready-ever
@@ -163,10 +176,10 @@ function replaceElement() {
         '<path fill="#018EA6" d="M121.003 63.53H78.08c-3.19 0-2.706 3.485 1.418 3.485h43.955c4.123 0 4.22-3.485 1.417-3.485h-3.867z"/>' +
         '<path d="M106.475 42.542c.445-.486.74-1.1.8-1.802.15-1.717-1.136-3.225-2.874-3.377-1.73-.152-3.26 1.12-3.41 2.835-.06.703.13 1.348.48 1.904-10.81.365-20.04 10.24-20.67 17.5l43.02 3.764c.64-7.26-6.74-18.587-17.32-20.824" fill="#DDD"/>' +
         '<path d="M117.808 57.225c-1.743-4.045-5.163-7.707-9.386-10.046-.56-.31-.76-1.01-.446-1.56.313-.56 1.02-.75 1.58-.44 4.66 2.58 8.447 6.64 10.386 11.15.25.58-.023 1.25-.613 1.5-.17.07-.35.1-.52.09-.43-.03-.83-.28-1.01-.7z" fill="#FFF"/>' +
-        '<text  fill="#FFF" font-family="resmioOpenSans, Open Sans" font-size="21.615" font-weight="300" letter-spacing="1" >' +
-          '<tspan x="32.0343862" y="152">90</tspan>' +
-          '<tspan x="59" y="152" font-size="19">% </tspan>' +
-          '<tspan x="' + texts.positive.x + '" y="152">' + texts.positive.text + '</tspan>' +
+        '<text x="' + feedbackScoreX + '" y="152" fill="#FFF" font-family="resmioOpenSans, Open Sans" font-size="21.615" font-weight="300" letter-spacing="0.5" >' +
+          '<tspan>' + feedbackScore + '</tspan>' +
+          '<tspan font-size="19">% </tspan>' +
+          '<tspan>' + texts.positive.text + '</tspan>' +
         '</text>' +
         '<text fill="' + palette.darker + '" font-family="resmioOpenSans, Open Sans" font-size="12.5" letter-spacing=".439">' +
           '<tspan x="' + texts.headline.x + '" y="96">' + texts.headline.text + '</tspan>' +
