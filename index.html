@@ -2,15 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Reputation badge test</title>
+  <title>Reputation widget test</title>
 </head>
 <body>
-  <div id="resmio-badge"></div>
+  <div
+    class="resmio-reputation-widget"
+    data-resmio-reputation-id="the-fish"
+    data-resmio-reputation-language="es"
+  >
+  </div>
+  <div
+    class="resmio-reputation-widget"
+    data-resmio-reputation-id="the-fish"
+    data-resmio-reputation-language="es"
+  >
+  </div>
   <script>
     (function() {
       var script = document.createElement('script');
-      script.src = 'index.js?id=the-fish&lang=en';
       script.async = true;
+      script.src = 'index.js';
       var entry = document.getElementsByTagName('script')[0];
       entry.parentNode.insertBefore(script, entry);
     })();
