@@ -1,9 +1,7 @@
 // Accesibility https://www.sitepoint.com/tips-accessible-svg/
+// handle wrong colors
 var ResmioRep = (function(window, undefined) {
   var ResmioRep = {}
-
-  // Delete this
-  var feedbackScore = '90'
 
   // Defaults that will be used when the user does not specify option values in
   // the html are defined here
@@ -22,7 +20,7 @@ var ResmioRep = (function(window, undefined) {
     // Widget Instances are stored here
     var widgets = getWidgetsFromThePage();
     // Call the server for the feedback score for every widget and render once
-    // We get the data back
+    // we get the data back
     for (var i=0 ; i < widgets.length ; i++) {
       getFeedbackAndRender(widgets[i])
     }
@@ -75,8 +73,7 @@ var ResmioRep = (function(window, undefined) {
           widget.feedbackScore = res.feedback_average
           renderElement(widget)
         } else {
-          console.log('Feedback is not public for: ' + widget.id)
-          console.log('Response:', req.response)
+          console.error('Feedback is not public for: ' + widget.id)
           return new Error('Feedback is not public')
         }
       }
@@ -157,6 +154,14 @@ var ResmioRep = (function(window, undefined) {
     }
     if (palettes[palette]) {
       return palettes[palette];
+    } else {
+      var availablePalettes = Object.keys(palettes)
+      console.error(
+        palette + ' is not an available color. ' +
+        'Colors available right now are: ' +
+        availablePalettes.join(', ') + '.'
+      )
+      return palettes[defaults.palette]
     }
   }
 
@@ -200,6 +205,14 @@ var ResmioRep = (function(window, undefined) {
     }
     if (translations[language]) {
       return translations[language];
+    } else {
+      var availableLanguages = Object.keys(translations)
+      console.error(
+        language + ' is not an available language. ' +
+        'Languages available right now are: ' +
+        availableLanguages.join(', ') + '.'
+      )
+      return new Error('Unknown language')
     }
   }
 
@@ -208,7 +221,6 @@ var ResmioRep = (function(window, undefined) {
     // Based on the length of the 2 strings
     var feedbackScoreLength = positiveText.length + feedbackScore.length
 
-    debugger
     switch (feedbackScoreLength) {
       case 8:
         return '44'
