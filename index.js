@@ -1,5 +1,4 @@
 // Accesibility https://www.sitepoint.com/tips-accessible-svg/
-// handle wrong colors
 var ResmioRep = (function(window, undefined) {
   var ResmioRep = {}
 
@@ -8,12 +7,6 @@ var ResmioRep = (function(window, undefined) {
   var defaults = {
     language: detectUserLanguage(),
     palette: 'darkBlue'
-  }
-
-  // Error messages are defined here
-  var errors = {
-    noIdFound: 'resmio reputation: no restaurant id found in the html, please '
-               + 'provide an id in a data-resmio-reputation-id attribute'
   }
 
   function initialize() {
@@ -42,9 +35,12 @@ var ResmioRep = (function(window, undefined) {
         location: location,
         palette: location.getAttribute('data-resmio-reputation-color') || defaults.palette
       };
-      // Handle the case when no id is given
+      // Handle the case when no valid id is given
       if (!options.id) {
-        console.error(errors.noIdFound)
+        console.error(
+          'resmio reputation: no valid restaurant id found in the html, ' +
+          'please provide a valid id in a data-resmio-reputation-id attribute'
+        )
       } else {
         widgets.push(options)
       }
@@ -73,7 +69,10 @@ var ResmioRep = (function(window, undefined) {
           widget.feedbackScore = res.feedback_average
           renderElement(widget)
         } else {
-          console.error('Feedback is not public for: ' + widget.id)
+          console.error(
+            'resmio reputation: ' + 'Feedback is not public for: ' + widget.id
+            // Add a link to the feedback settings page here
+          )
           return new Error('Feedback is not public')
         }
       }
@@ -157,6 +156,7 @@ var ResmioRep = (function(window, undefined) {
     } else {
       var availablePalettes = Object.keys(palettes)
       console.error(
+        'resmio reputation: ' +
         palette + ' is not an available color. ' +
         'Colors available right now are: ' +
         availablePalettes.join(', ') + '.'
@@ -208,6 +208,7 @@ var ResmioRep = (function(window, undefined) {
     } else {
       var availableLanguages = Object.keys(translations)
       console.error(
+        'resmio reputation: ' +
         language + ' is not an available language. ' +
         'Languages available right now are: ' +
         availableLanguages.join(', ') + '.'
