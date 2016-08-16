@@ -2,10 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Reputation badge test</title>
+  <title>Reputation widget test</title>
 </head>
 <body>
-  <div id="resmio-badge"></div>
-  <script src="index.js"></script>
+  <div
+    class="resmio-reputation-widget"
+    data-resmio-reputation-language="nl"
+    data-resmio-reputation-color="lightBlue"
+  >
+  </div>
+  <div
+    class="resmio-reputation-widget"
+    data-resmio-reputation-id="janns-doenerbude"
+    data-resmio-reputation-language="nl"
+    data-resmio-reputation-color="yellow"
+  >
+  </div>
+  <div
+    class="resmio-reputation-widget"
+    data-resmio-reputation-id="la-croqueta-feliz"
+    data-resmio-reputation-language="es"
+    data-resmio-reputation-color="darkBlue"
+  >
+  </div>
+  <script>
+    (function() {
+      // Widget Instructions go here
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'reputation-widget.min.js';
+      var entry = document.getElementsByTagName('script')[0];
+      entry.parentNode.insertBefore(script, entry);
+    })();
+  </script>
 </body>
 </html>
