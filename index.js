@@ -9,9 +9,41 @@ var ResmioRep = (function(window, undefined) {
     palette: 'darkBlue'
   }
 
+  var analyticsEvents = {
+    widgetRendered: function(data) {
+      ga(
+        'send',
+        'event',
+        {
+          eventCategory: 'Reputation Widget',
+          eventAction: 'rendered',
+          eventLabel: data
+        },
+        {
+           nonInteraction: true
+        }
+      )
+    },
+    errorHappened: function(error) {
+      ga(
+        'send',
+        'event',
+        {
+          eventCategory: 'Reputation Widget',
+          eventAction: 'error',
+          eventLabel: error
+        },
+        {
+           nonInteraction: true
+        }
+      )
+    }
+  }
+
   function initialize() {
+    analyticsSetup('UA-26356445-15')
     // Widget Instances are stored here
-    var widgets = getWidgetsFromThePage();
+    var widgets = getWidgetsInstancesFromDOM();
     // Call the server for the feedback score for every widget and render once
     // we get the data back
     for (var i=0 ; i < widgets.length ; i++) {
@@ -19,7 +51,7 @@ var ResmioRep = (function(window, undefined) {
     }
   }
 
-  function getWidgetsFromThePage() {
+  function getWidgetsInstancesFromDOM() {
     var widgets = [];
     // Scan the page for all the widget instances
     var targets = document.getElementsByClassName('resmio-reputation-widget');
@@ -59,20 +91,29 @@ var ResmioRep = (function(window, undefined) {
 
   function getFeedbackAndRender(widget) {
     // This needs to call the feedback score API endpoint instead
-    var req = makeCORSRequest('http://test.resmio.com/v1/facility/' + widget.id)
+    var req = makeCORSRequest('//app.resmio.com/v1/facility/' + widget.id)
     req.onload = function onload() {
       if (req.status === 404) {
+        analyticsEvents.errorHappened({
+          type: 'Feedback endpoint not reached',
+          facility: widget.id
+        })
         return new Error('not found')
       } else {
         res = JSON.parse(req.response)
         if (res.feedback_public) {
           widget.feedbackScore = res.feedback_average
           renderElement(widget)
+          analyticsEvents.widgetRendered(widget)
         } else {
           console.error(
             'resmio reputation: ' + 'Feedback is not public for: ' + widget.id
             // Add a link to the feedback settings page here
           )
+          analyticsEvents.errorHappened({
+            type: 'Feedback not public',
+            facility: widget.id
+          })
           return new Error('Feedback is not public')
         }
       }
@@ -161,6 +202,10 @@ var ResmioRep = (function(window, undefined) {
         'Colors available right now are: ' +
         availablePalettes.join(', ') + '.'
       )
+      analyticsEvents.errorHappened({
+        type: 'palette not valid',
+        palette: palette
+      })
       return palettes[defaults.palette]
     }
   }
@@ -252,6 +297,17 @@ var ResmioRep = (function(window, undefined) {
       xhr = null
     }
     return xhr;
+  }
+
+  function analyticsSetup(UACode) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', UACode, 'auto');
+    ga('set', 'forceSSL', true);
+    ga('send', 'pageview');
   }
 
   // Run the code
