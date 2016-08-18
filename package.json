@@ -1,0 +1,28 @@
+{
+  "name": "reputation-widget",
+  "version": "0.1.1",
+  "description": "resmio reputation widget",
+  "main": "index.js",
+  "scripts": {
+    "build": "uglifyjs src/index.js -c -o build/reputation-widget.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/resmio/reputation-widget.git"
+  },
+  "keywords": [
+    "resmio",
+    "restaurant",
+    "reputation"
+  ],
+  "author": "Jose Menor <josemenor@gmail.com> (http://josemenor.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/resmio/reputation-widget/issues"
+  },
+  "homepage": "https://github.com/resmio/reputation-widget#readme",
+  "dependencies": {
+    "uglify": "^0.1.5"
+  }
+}
