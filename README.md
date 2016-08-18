@@ -34,36 +34,35 @@ restaurant. Here's how to make it work:
   take a look at how this last html code work.
 
 ### Options ###
-- ```class="resmio-reputation-widget"``` and
-  ```data-resmio-reputation-id="<restaurantid>"```
+- `class="resmio-reputation-widget"` and `data-resmio-reputation-id="<restaurantid>"`
   are mandatory, where you need to replace <restaurantid> for an actual
   id. To find this id, you can go to the index page of https://app.resmio.com/
   for the restaurant, and copy the part of the url that comes after the /
 
   IMAGE
 
-- ``` data-resmio-reputation-language="<language>" ``` is optional, you need to
+- `data-resmio-reputation-language="<language>"` is optional, you need to
   replace <language> with one of the available language codes right now the
   following are available:
-    - ```da``` for Danish  
-    - ```de``` for German
-    - ```en``` for English
-    - ```es``` for Spanish
-    - ```fr``` for French
-    - ```nl``` for Dutch
-    - ```pt``` for Portuguese
+    - `da` for Danish  
+    - `de` for German
+    - `en` for English
+    - `es` for Spanish
+    - `fr` for French
+    - `nl` for Dutch
+    - `pt` for Portuguese
 
   If you don't provide a language, the widget will be shown in the user operating
   system language, if this can not be detected we will default to english.
 
-  - ```data-resmio-reputation-color="<color>"``` also optional, replace <color>
+  - `data-resmio-reputation-color="<color>"` also optional, replace <color>
     with one of these available palettes. We default to darkBlue if no palette
     is provided.
-    - ```darkBlue```
+    - `darkBlue`
         IMAGE
-    - ```lightBlue``
+    - `lightBlue`
         IMAGE
-    - ```yellow```
+    - `yellow`
         IMAGE
 
 ### Troubleshooting ###
