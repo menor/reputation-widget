@@ -34,15 +34,15 @@ restaurant. Here's how to make it work:
   take a look at how this last html code work.
 
 ### Options ###
-- ```class="resmio-reputation-widget"``` and
-  ```data-resmio-reputation-id="<restaurantid>"```
-  are mandatory, where you need to replace <restaurantid> for an actual
+- `class="resmio-reputation-widget"` and
+  `data-resmio-reputation-id="<restaurantid>"` 
+  are mandatory, where you need to replace `<restaurantid>` for an actual
   id. To find this id, you can go to the index page of https://app.resmio.com/
   for the restaurant, and copy the part of the url that comes after the /
 
   IMAGE
 
-- ``` data-resmio-reputation-language="<language>" ``` is optional, you need to
+- `data-resmio-reputation-language="<language>"` is optional, you need to
   replace <language> with one of the available language codes right now the
   following are available:
     - ```da``` for Danish  
