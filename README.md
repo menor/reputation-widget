@@ -8,8 +8,9 @@ restaurant. Here's how to make it work:
 ## Instructions ##
 - First you need to copy this script and include it anywhere (we recommend
   putting it before the closing <body> tag though, to not block the render of
-  your html) in your webpage :  
-  ```javascript
+  your html) in your webpage :   
+
+  ```
       <script>
         (function() {
           var script = document.createElement('script');
@@ -20,6 +21,7 @@ restaurant. Here's how to make it work:
         })();
       </script>
    ```
+
 - Once that is done the reputation badge will be injected wherever an element
   like this:  
   ```html
