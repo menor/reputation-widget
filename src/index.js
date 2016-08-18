@@ -310,8 +310,11 @@ var ResmioRep = (function(window, undefined) {
     ga('send', 'pageview');
   }
 
+  // http://dustindiaz.com/smallest-domready-ever
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+
   // Run the code
-  initialize()
+  r(initialize())
 
   return ResmioRep;
 })(window)
