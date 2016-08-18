@@ -91,7 +91,7 @@ var ResmioRep = (function(window, undefined) {
 
   function getFeedbackAndRender(widget) {
     // This needs to call the feedback score API endpoint instead
-    var req = makeCORSRequest('https://app.resmio.com/v1/facility/' + widget.id)
+    var req = makeCORSRequest('https://api.resmio.com/v1/facility/' + widget.id)
     req.onload = function onload() {
       if (req.status === 404) {
         analyticsEvents.errorHappened({
