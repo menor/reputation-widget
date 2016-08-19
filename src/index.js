@@ -311,10 +311,10 @@ var ResmioRep = (function(window, undefined) {
   }
 
   // http://dustindiaz.com/smallest-domready-ever
-  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+  function r(f){/(un|ing)/.test(document.readyState)?setTimeout(r,9,f):f()}
 
   // Run the code
-  r(initialize())
+  r(initialize)
 
   return ResmioRep;
 })(window)
