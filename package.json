@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "uglifyjs src/index.js -c -o build/reputation-widget.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "./node_modules/node-static/bin/cli.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
   "homepage": "https://github.com/resmio/reputation-widget#readme",
   "dependencies": {
     "uglify": "^0.1.5"
+  },
+  "devDependencies": {
+    "node-static": "^0.7.8"
   }
 }
