@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Reputation widget test</title>
+  <script>
+    (function() {
+      // Link to readme
+      var script = document.createElement('script');
+      script.defer = true;
+      script.src = './src/index.js';
+      var entry = document.getElementsByTagName('script')[0];
+      entry.parentNode.insertBefore(script, entry);
+    })();
+  </script>
 </head>
 <body>
   <div
@@ -25,15 +35,5 @@
     data-resmio-reputation-color="yellow"
   >
   </div>
-  <script>
-    (function() {
-      // Link to readme
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://static.resmio.com/static/reputation-widget.js';
-      var entry = document.getElementsByTagName('script')[0];
-      entry.parentNode.insertBefore(script, entry);
-    })();
-  </script>
 </body>
 </html>
