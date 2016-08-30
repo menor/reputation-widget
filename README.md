@@ -1,13 +1,13 @@
 Resmio reputation widget allows you to show a graphic like this:  
 
-IMAGE  
+![Example Dark Blue](resmio.github.com/reputation-widget/images/badge-dark-blue.png)
 
 In any webpage, showing a percentage based on feedback real guests left for your
 restaurant. Here's how to make it work:
 
 ## Instructions ##
 - First you need to copy this script and include it anywhere (we recommend
-  putting it before the closing <body> tag though, to not block the render of
+  putting it before the closing `<body>` tag though, to not block the render of
   your html) in your webpage :   
 
   ```
@@ -61,12 +61,22 @@ restaurant. Here's how to make it work:
     with one of these available palettes. We default to darkBlue if no palette
     is provided.
     - `darkBlue`
-        IMAGE
+        ![Example Dark Blue](resmio.github.com/reputation-widget/images/badge-dark-blue.png)
     - `lightBlue`
-        IMAGE
+        ![Example Light Blue](resmio.github.com/reputation-widget/images/badge-light-blue.png)
     - `yellow`
-        IMAGE
+        ![Example Yellow](resmio.github.com/reputation-widget/images/badge-yellow.png)
 
 ### Troubleshooting ###
+Setting this rules in the `.resmio-reputation-widget` class can help:
+```
+z-index: 10000;
+position: relative;
+display: inline-block;
+```
+
+You can use regular css on the container to set size and position or any other
+property.  
+
 If you have problems, you can send us an email to EMAIL or open an issue in
  this repo.
