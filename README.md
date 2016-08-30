@@ -60,11 +60,11 @@ restaurant. Here's how to make it work:
   - `data-resmio-reputation-color="<color>"` also optional, replace <color>
     with one of these available palettes. We default to darkBlue if no palette
     is provided.
-    - `darkBlue`
+    - `darkBlue`  
         ![Example Dark Blue](/images/badge-dark-blue.png)  
-    - `lightBlue`
+    - `lightBlue`  
         ![Example Light Blue](/images/badge-light-blue.png)  
-    - `yellow`
+    - `yellow`  
         ![Example Yellow](/images/badge-yellow.png)  
 
 ### Troubleshooting ###
