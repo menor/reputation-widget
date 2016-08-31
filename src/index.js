@@ -24,14 +24,15 @@ var ResmioRep = (function(window, undefined) {
         }
       )
     },
-    errorHappened: function(error) {
+    errorHappened: function(data) {
       ga(
         'send',
         'event',
         {
           eventCategory: 'Reputation Widget',
           eventAction: 'error',
-          eventLabel: error
+          eventLabel: data.type,
+          eventValue: data.value
         },
         {
            nonInteraction: true
@@ -90,13 +91,12 @@ var ResmioRep = (function(window, undefined) {
   }
 
   function getFeedbackAndRender(widget) {
-    // This needs to call the feedback score API endpoint instead
     var req = makeCORSRequest('https://api.resmio.com/v1/facility/' + widget.id)
     req.onload = function onload() {
       if (req.status === 404) {
         analyticsEvents.errorHappened({
           type: 'Feedback endpoint not reached',
-          facility: widget.id
+          value: widget.id
         })
         return new Error('not found')
       } else {
@@ -104,7 +104,10 @@ var ResmioRep = (function(window, undefined) {
         if (res.feedback_public) {
           widget.feedbackScore = res.feedback_average
           renderElement(widget)
-          analyticsEvents.widgetRendered(widget)
+          analyticsEvents.widgetRendered({
+            type: 'Widget Rendered',
+            value: widget.id
+          })
         } else {
           console.error(
             'resmio reputation: ' + 'Feedback is not public for: ' + widget.id
@@ -206,7 +209,7 @@ var ResmioRep = (function(window, undefined) {
       )
       analyticsEvents.errorHappened({
         type: 'palette not valid',
-        palette: palette
+        value: palette
       })
       return palettes[defaults.palette]
     }
