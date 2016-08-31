@@ -176,7 +176,7 @@ var ResmioRep = (function(window, undefined) {
   }
 
 
-  function getPalette(palette, widget.id) {
+  function getPalette(palette, widget) {
     var palettes = {
       darkBlue: {
         medium: '#3E4862',
