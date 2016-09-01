@@ -138,7 +138,7 @@ var ResmioRep = (function(window, undefined) {
             '}' +
           '</style>' +
           '<defs>' +
-            '<rect id="a" x="14.543" y="124.148" width="172.751" height="40.153" rx="2"/>' +
+            '<rect id="a" x="14.543" y="124.148" width="172.751" height="40.153" rx="2" style="transition:none;"/>' +
             '<filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="b">' +
               '<feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>' +
               '<feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>' +
@@ -221,7 +221,7 @@ var ResmioRep = (function(window, undefined) {
       },
       de: {
         headline: { text: 'ZUFRIEDENHEIT', x: '53' },
-        subline: { text: 'UNSERER GÄSTEN', x: '46' },
+        subline: { text: 'UNSERER GÄSTE', x: '46' },
         positive: { text: 'POSITIV' }
       },
       en: {
