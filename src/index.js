@@ -10,28 +10,29 @@ var ResmioRep = (function(window, undefined) {
   }
 
   var analyticsEvents = {
-    widgetRendered: function(data) {
+    widgetRendered: function(facilityId) {
       ga(
         'send',
         'event',
         {
           eventCategory: 'Reputation Widget',
           eventAction: 'rendered',
-          eventLabel: data
+          eventLabel: facilityId
         },
         {
            nonInteraction: true
         }
       )
     },
-    errorHappened: function(error) {
+    errorHappened: function(data) {
       ga(
         'send',
         'event',
         {
           eventCategory: 'Reputation Widget',
           eventAction: 'error',
-          eventLabel: error
+          eventLabel: data.id,
+          eventValue: data.type
         },
         {
            nonInteraction: true
@@ -90,13 +91,12 @@ var ResmioRep = (function(window, undefined) {
   }
 
   function getFeedbackAndRender(widget) {
-    // This needs to call the feedback score API endpoint instead
     var req = makeCORSRequest('https://api.resmio.com/v1/facility/' + widget.id)
     req.onload = function onload() {
       if (req.status === 404) {
         analyticsEvents.errorHappened({
-          type: 'Feedback endpoint not reached',
-          facility: widget.id
+          id: widget.id,
+          type: 'Feedback endpoint not reached'
         })
         return new Error('not found')
       } else {
@@ -104,15 +104,15 @@ var ResmioRep = (function(window, undefined) {
         if (res.feedback_public) {
           widget.feedbackScore = res.feedback_average
           renderElement(widget)
-          analyticsEvents.widgetRendered(widget)
+          analyticsEvents.widgetRendered(widget.id)
         } else {
           console.error(
             'resmio reputation: ' + 'Feedback is not public for: ' + widget.id
             // Add a link to the feedback settings page here
           )
           analyticsEvents.errorHappened({
-            type: 'Feedback not public',
-            facility: widget.id
+            id: widget.id,
+            type: 'Feedback not public'
           })
           return new Error('Feedback is not public')
         }
@@ -176,7 +176,7 @@ var ResmioRep = (function(window, undefined) {
   }
 
 
-  function getPalette(palette) {
+  function getPalette(palette, widget) {
     var palettes = {
       darkBlue: {
         medium: '#3E4862',
@@ -205,8 +205,8 @@ var ResmioRep = (function(window, undefined) {
         availablePalettes.join(', ') + '.'
       )
       analyticsEvents.errorHappened({
-        type: 'palette not valid',
-        palette: palette
+        id: widget.id,
+        type: 'palette not valid'
       })
       return palettes[defaults.palette]
     }
