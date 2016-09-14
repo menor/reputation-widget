@@ -1,4 +1,6 @@
-Resmio reputation widget allows you to show a graphic like this:  
+#How to integrate resmio reputation widget
+
+resmio reputation widget allows you to show a graphic like this:  
 
 ![Example Dark Blue](/images/badge-dark-blue.png)  
 
@@ -13,6 +15,7 @@ restaurant. Here's how to make it work:
   ```
       <script>
         (function() {
+          // https://github.com/resmio/reputation-widget
           var script = document.createElement('script');
           script.async = true;
           script.src = 'https://static.resmio.com/static/reputation-widget.js';

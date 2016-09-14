@@ -220,7 +220,7 @@ var ResmioRep = (function(window, undefined) {
         positive: { text: 'POSITIV' }
       },
       de: {
-        headline: { text: 'ZUFRIEDENHEIT', x: '53' },
+        headline: { text: 'ZUFRIEDENHEIT', x: '51' },
         subline: { text: 'UNSERER GÄSTE', x: '46' },
         positive: { text: 'POSITIV' }
       },
