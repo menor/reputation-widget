@@ -1,0 +1,6 @@
+{
+  "dist": {
+    "repo": "git@github.com:resmio/reputation-widget.git#gh-pages",
+    "beforeStageCommand": "cat front.yml ../README.md > index.md"
+    }
+}

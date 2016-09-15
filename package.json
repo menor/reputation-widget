@@ -27,6 +27,7 @@
     "uglify": "^0.1.5"
   },
   "devDependencies": {
-    "node-static": "^0.7.8"
+    "node-static": "^0.7.8",
+    "release-it": "^2.4.3"
   }
 }
