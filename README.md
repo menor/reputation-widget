@@ -1,5 +1,7 @@
 #How to integrate resmio reputation widget
 
+[resmio.github.io/reputation-widget](https://resmio.github.io/reputation-widget/)
+
 resmio reputation widget allows you to show a graphic like this:  
 
 ![Example Dark Blue](/images/badge-dark-blue.png)  
@@ -43,8 +45,6 @@ restaurant. Here's how to make it work:
   are mandatory, where you need to replace <restaurantid> for an actual
   id. To find this id, you can go to the index page of https://app.resmio.com/
   for the restaurant, and copy the part of the url that comes after the /
-
-  IMAGE
 
 - `data-resmio-reputation-language="<language>"` is optional, you need to
   replace <language> with one of the available language codes right now the
