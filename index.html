@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>resmio Reputation Widget by resmio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">resmio Reputation Widget</h1>
+      <h2 class="project-tagline">Instructions on how to integrate the resmio reputation widget</h2>
+      <a href="https://github.com/resmio/reputation-widget" class="btn">View on GitHub</a>
+      <a href="https://github.com/resmio/reputation-widget/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/resmio/reputation-widget/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="how-to-integrate-resmio-reputation-widget" class="anchor" href="#how-to-integrate-resmio-reputation-widget" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to integrate resmio reputation widget</h1>
+
+<p>resmio reputation widget allows you to show a graphic like this:  </p>
+
+<p><img src="/images/badge-dark-blue.png" alt="Example Dark Blue">  </p>
+
+<p>In any webpage, showing a percentage based on feedback real guests left for your
+restaurant. Here's how to make it work:</p>
+
+<h2>
+<a id="instructions" class="anchor" href="#instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instructions</h2>
+
+<ul>
+<li>
+<p>First you need to copy this script and include it anywhere (we recommend
+putting it before the closing <code>&lt;body&gt;</code> tag though, to not block the render of
+your html) in your webpage :   </p>
+
+<pre><code>    &lt;script&gt;
+      (function() {
+        // https://github.com/resmio/reputation-widget
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://static.resmio.com/static/reputation-widget.js';
+        var entry = document.getElementsByTagName('script')[0];
+        entry.parentNode.insertBefore(script, entry);
+      })();
+    &lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>Once that is done the reputation badge will be injected wherever an element
+like this:  </p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span>
+  <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>resmio-reputation-widget<span class="pl-pds">"</span></span>
+  <span class="pl-e">data-resmio-reputation-id</span>=<span class="pl-s"><span class="pl-pds">"</span>janns-doenerbude<span class="pl-pds">"</span></span>
+  <span class="pl-e">data-resmio-reputation-language</span>=<span class="pl-s"><span class="pl-pds">"</span>de<span class="pl-pds">"</span></span>
+  <span class="pl-e">data-resmio-reputation-color</span>=<span class="pl-s"><span class="pl-pds">"</span>yellow<span class="pl-pds">"</span></span>
+&gt;&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<p>is found in the html, you can include several of them if you want. Now let's
+take a look at how this last html code work.</p>
+</li>
+</ul>
+
+<h3>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h3>
+
+<ul>
+<li>
+<p><code>class="resmio-reputation-widget"</code> and <code>data-resmio-reputation-id="&lt;restaurantid&gt;"</code>
+are mandatory, where you need to replace  for an actual
+id. To find this id, you can go to the index page of <a href="https://app.resmio.com/">https://app.resmio.com/</a>
+for the restaurant, and copy the part of the url that comes after the /</p>
+
+<p>IMAGE</p>
+</li>
+<li>
+<p><code>data-resmio-reputation-language="&lt;language&gt;"</code> is optional, you need to
+replace  with one of the available language codes right now the
+following are available:</p>
+
+<ul>
+<li>
+<code>da</code> for Danish<br>
+</li>
+<li>
+<code>de</code> for German</li>
+<li>
+<code>en</code> for English</li>
+<li>
+<code>es</code> for Spanish</li>
+<li>
+<code>fr</code> for French</li>
+<li>
+<code>nl</code> for Dutch</li>
+<li>
+<code>pt</code> for Portuguese</li>
+</ul>
+
+<p>If you don't provide a language, the widget will be shown in the user operating
+system language, if this can not be detected we will default to english.</p>
+
+<ul>
+<li>
+<code>data-resmio-reputation-color="&lt;color&gt;"</code> also optional, replace 
+with one of these available palettes. We default to darkBlue if no palette
+is provided.
+
+<ul>
+<li>
+<code>darkBlue</code><br>
+<img src="/images/badge-dark-blue.png" alt="Example Dark Blue"><br>
+</li>
+<li>
+<code>lightBlue</code><br>
+<img src="/images/badge-light-blue.png" alt="Example Light Blue"><br>
+</li>
+<li>
+<code>yellow</code><br>
+<img src="/images/badge-yellow.png" alt="Example Yellow"><br>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h3>
+
+<p>Setting this rules in the <code>.resmio-reputation-widget</code> class can help:</p>
+
+<pre><code>z-index: 10000;
+position: relative;
+display: inline-block;
+</code></pre>
+
+<p>You can use regular css on the container to set size and position or any other
+property.  </p>
+
+<p>If you have problems, you can send us an email to EMAIL or open an issue in
+ this repo.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/resmio/reputation-widget">resmio Reputation Widget</a> is maintained by <a href="https://github.com/resmio">resmio</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
