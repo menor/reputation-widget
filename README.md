@@ -70,7 +70,7 @@ restaurant. Here's how to make it work:
     - `yellow`  
         ![Example Yellow](/images/badge-yellow.png)  
 
-### Troubleshooting ###
+### Technical tips ###
 Setting this rules in the `.resmio-reputation-widget` class can help:
 ```
 z-index: 10000;
@@ -79,7 +79,42 @@ display: inline-block;
 ```
 
 You can use regular css on the container to set size and position or any other
-property.  
+property.  The widget will always take 100% of its container element. You can
+change how this works though, here's how to do it:
 
-If you have problems, you can send us an email to EMAIL or open an issue in
+The widget is contained in a class called `.resmio-reputation-badge-wrapper`
+adding rules to this class in your css will help you position and scale the
+widget. For example if we want the widget to be centered and `350px` width we would
+add this to our styles:
+```
+.resmio-reputation-badge-wrapper {
+  margin: 0 auto;
+  width: 350px;
+}
+```
+
+Something to notice about the width. In our legibility tests we got to the
+conclusion that the widget works better when its size falls between `200px` and
+`500px`, so those are the minimum and maximum width at which the widget will be
+rendered. There is a way to override this, in the rare case you want to make it
+bigger or smaller. You just need to add a declaration like this to your styles:  
+```
+.resmio-reputation-badge-wrapper {
+  width: 600px;
+  max-width: 1000px !important;
+}
+```
+
+or if you want to set the min-width to `150px` for example:
+```
+.resmio-reputation-badge-wrapper {
+  width: 150px;
+  min-width: 100px !important;
+}
+```
+
+Use it wisely and remember the Spiderman movies quote: `With great power comes
+great responsibility`
+
+If you have problems, you can send us an email to <support@resmio.com> or open an issue in
  this repo.

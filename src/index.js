@@ -129,7 +129,7 @@ var ResmioRep = (function(window, undefined) {
     el = options.location
 
     el.innerHTML = (
-      '<div id="reputation-badge-wrapper" style="min-width:200px;">' +
+      '<div class="resmio-reputation-badge-wrapper" style="min-width:200px;max-width:500px;">' +
         '<svg viewBox="0 0 201 229" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
           '<style>'  +
             '@font-face {'+

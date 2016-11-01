@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reputation widget test page</title>
+  <style>
+    .resmio-reputation-badge-wrapper {
+      margin: 0 auto;
+      width: 800px;
+      max-width: 1000px !important;
+    }
+  </style>
+</head>
+<body>
+  <div
+    class="resmio-reputation-widget"
+    data-resmio-reputation-id="the-fish"
+    data-resmio-reputation-language="es"
+    data-resmio-reputation-color="yellow"
+  ></div>
+  <script>
+    (function() {
+      // https://github.com/resmio/reputation-widget
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = './src/index.js';
+      var entry = document.getElementsByTagName('script')[0];
+      entry.parentNode.insertBefore(script, entry);
+    })();
+  </script>
+</body>
+</html>
