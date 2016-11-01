@@ -131,8 +131,14 @@ is provided.
 </li>
 </ul>
 
+
+
 <h3>
-<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h3>
+  <a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true">
+    <span aria-hidden="true" class="octicon octicon-link"></span>
+  </a>
+    Technical tips
+  </h3>
 
 <p>Setting this rules in the <code>.resmio-reputation-widget</code> class can help:</p>
 
@@ -142,9 +148,45 @@ display: inline-block;
 </code></pre>
 
 <p>You can use regular css on the container to set size and position or any other
-property.  </p>
+property.  The widget will always take 100% of its container element. You can
+change how this works though, here's how to do it:</p>
 
-<p>If you have problems, you can send us an email to EMAIL or open an issue in
+<p>The widget is contained in a class called <code>.resmio-reputation-badge-wrapper`</code>
+adding rules to this class in your css will help you position and scale the
+widget. For example if we want the widget to be centered and <code>350px</code> width we would
+add this to our styles:</p>
+<pre><code>
+.resmio-reputation-badge-wrapper {
+  margin: 0 auto;
+  width: 350px;
+}
+</code></pre>
+
+<p>Something to notice about the width. In our legibility tests we got to the
+conclusion that the widget works better when its size falls between <code>200px</code> and
+<code>500px</code>, so those are the minimum and maximum width at which the widget will be
+rendered. There is a way to override this, in the rare case you want to make it
+bigger or smaller. You just need to add a declaration like this to your styles:</p>
+
+<pre><code>
+.resmio-reputation-badge-wrapper {
+  width: 600px;
+  max-width: 1000px !important;
+}
+</code></pre>
+
+<p>or if you want to set the min-width to `150px` for example:</p>
+<pre><code>
+.resmio-reputation-badge-wrapper {
+  width: 150px;
+  min-width: 100px !important;
+}
+</code></pre>
+
+<p>Use it wisely and remember the Spiderman movies quote: <code>With great power comes
+great responsibility</code></p>
+
+<p>If you have problems, you can send us an email to <a href="mailto:support@resmio.com?Subject=Reputation%20Widget%20help">support@resmio.com</a> or open an issue in
  this repo.</p>
       </section>
     </div>
