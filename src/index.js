@@ -121,12 +121,23 @@ var ResmioRep = (function(window, undefined) {
     req.send()
   }
 
+  function openModal() {
+    console.log('openModal')
+    this.innerHTML = ('<div>Follow your dreams :P</div>')
+    this.setAttribute(
+      'style',
+      'color:yellow;position:absolute;background-color:red;top:0;right:0;left:0;bottom:0'
+    )
+  }
+
   function renderElement(options) {
     palette = getPalette(options.palette)
     texts = getTranslation(options.language)
     feedbackScore = options.feedbackScore.toString()
     feedbackPosition = getFeedbackPosition(texts.positive.text, feedbackScore)
     el = options.location
+
+    el.onclick = openModal
 
     el.innerHTML = (
       '<div class="resmio-reputation-badge-wrapper" style="min-width:200px;max-width:500px;">' +
