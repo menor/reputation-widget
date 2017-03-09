@@ -35,6 +35,7 @@ restaurant. Here's how to make it work:
     data-resmio-reputation-id="janns-doenerbude"
     data-resmio-reputation-language="de"
     data-resmio-reputation-color="yellow"
+    data-resmio-reputation-max-width="250px"
   ></div>
   ```
   is found in the html, you can include several of them if you want. Now let's
@@ -70,6 +71,11 @@ restaurant. Here's how to make it work:
     - `yellow`  
         ![Example Yellow](/images/badge-yellow.png)  
 
+  - `data-resmio-reputation-max-width="<size>"` optional, replace <size>
+    with a value (including valid units as px, em, rem ...). We default to 500px
+    if this property is not present. Remember that this is just a limit to how
+    much the widget will expand, not a fixed size.
+
 ### Technical tips ###
 Setting this rules in the `.resmio-reputation-widget` class can help:
 ```
@@ -97,15 +103,7 @@ Something to notice about the width. In our legibility tests we got to the
 conclusion that the widget works better when its size falls between `200px` and
 `500px`, so those are the minimum and maximum width at which the widget will be
 rendered. There is a way to override this, in the rare case you want to make it
-bigger or smaller. You just need to add a declaration like this to your styles:  
-```
-.resmio-reputation-badge-wrapper {
-  width: 600px;
-  max-width: 1000px !important;
-}
-```
-
-or if you want to set the min-width to `150px` for example:
+smaller. You just need to add a declaration like this to your styles:  
 ```
 .resmio-reputation-badge-wrapper {
   width: 150px;
