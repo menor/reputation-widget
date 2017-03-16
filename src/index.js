@@ -6,7 +6,9 @@ var ResmioRep = (function(window, undefined) {
   // the html are defined here
   var defaults = {
     language: detectUserLanguage(),
-    palette: 'darkBlue'
+    maxWidth: '500px',
+    minWidth: '150px',
+    palette: 'darkBlue',
   }
 
   var analyticsEvents = {
@@ -66,6 +68,8 @@ var ResmioRep = (function(window, undefined) {
         id: location.getAttribute('data-resmio-reputation-id'),
         language: location.getAttribute('data-resmio-reputation-language') || defaults.language,
         location: location,
+        maxWidth: location.getAttribute('data-resmio-reputation-max-width') || defaults.maxWidth,
+        minWidth: defaults.minWidth,
         palette: location.getAttribute('data-resmio-reputation-color') || defaults.palette
       };
       // Handle the case when no valid id is given
@@ -129,7 +133,7 @@ var ResmioRep = (function(window, undefined) {
     el = options.location
 
     el.innerHTML = (
-      '<div class="resmio-reputation-badge-wrapper" style="min-width:200px;max-width:500px;">' +
+      '<div class="resmio-reputation-badge-wrapper" style="min-width:' + options.minWidth + ';max-width:' + options.maxWidth + ';">' +
         '<svg viewBox="0 0 201 229" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
           '<style>'  +
             '@font-face {'+
