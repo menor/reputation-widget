@@ -142,23 +142,23 @@ var ResmioRep = (function(window, undefined) {
             '}' +
           '</style>' +
           '<defs>' +
-            '<rect id="a" x="14.543" y="124.148" width="172.751" height="40.153" rx="2" style="transition:none;"/>' +
-            '<filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="b">' +
+            '<rect id="resmio-rep-a" x="14.543" y="124.148" width="172.751" height="40.153" rx="2" style="transition:none;"/>' +
+            '<filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="resmio-rep-b">' +
               '<feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>' +
               '<feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>' +
               '<feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>' +
               '<feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.149230072 0" in="shadowBlurOuter1"/>' +
             '</filter>' +
-            '<mask id="c" x="0" y="0" width="172.751" height="40.153" fill="#fff">' +
-              '<use xlink:href="#a"/>' +
+            '<mask id="resmio-rep-c" x="0" y="0" width="172.751" height="40.153">' +
+              '<use xlink:href="#resmio-rep-a" fill="#fff"/>' +
             '</mask>' +
           '</defs>' +
             '<path id="scroll-torn" fill="' + palette.dark + '"d="M145.566 170.98l41.51-7.328H151.34m-93.217 7.432l-41.408-7.323 37.614.49"/>' +
             '<path id="badge-back"  stroke="' + palette.dark + '" fill="' + palette.medium + '" d="M35.67 147.343C4.313 98.235 11.697 61.825 11.697 61.825l89.878-50.655 88.562 49.668s7.383 36.41-23.976 85.518c-31.35 49.108-65.14 70.45-65.14 70.45s-33.99-20.356-65.35-69.463z"/>' +
             '<path id="badge-fill"  stroke="' + palette.dark + '" fill="#FFF" d="M43.537 142.9c-27.977-43.786-21.39-76.25-21.39-76.25l80.186-45.168 79.01 44.288s6.588 32.465-21.39 76.253c-27.976 43.79-58.948 62.81-58.948 62.81s-29.49-18.14-57.468-61.93z"/>' +
             '<path id="legend-back" fill="' + palette.darker + '" d="M45.35 164.165l17.49 19.803h75.383l16.852-19.803"/>' +
-            '<use fill="#000" filter="url(#b)" xlink:href="#a"/>' +
-            '<use fill="' + palette.medium + '" stroke="' + palette.dark + '" mask="url(#c)" stroke-width="2" xlink:href="#a"/>' +
+            '<use fill="#000" filter="url(#resmio-rep-b)" xlink:href="#resmio-rep-a"/>' +
+            '<use fill="' + palette.medium + '" stroke="' + palette.dark + '" mask="url(#resmio-rep-c)" stroke-width="2" xlink:href="#resmio-rep-a"/>' +
             '<path fill="#018EA6" d="M121.003 63.53H78.08c-3.19 0-2.706 3.485 1.418 3.485h43.955c4.123 0 4.22-3.485 1.417-3.485h-3.867z"/>' +
             '<path d="M106.475 42.542c.445-.486.74-1.1.8-1.802.15-1.717-1.136-3.225-2.874-3.377-1.73-.152-3.26 1.12-3.41 2.835-.06.703.13 1.348.48 1.904-10.81.365-20.04 10.24-20.67 17.5l43.02 3.764c.64-7.26-6.74-18.587-17.32-20.824" fill="#DDD"/>' +
             '<path d="M117.808 57.225c-1.743-4.045-5.163-7.707-9.386-10.046-.56-.31-.76-1.01-.446-1.56.313-.56 1.02-.75 1.58-.44 4.66 2.58 8.447 6.64 10.386 11.15.25.58-.023 1.25-.613 1.5-.17.07-.35.1-.52.09-.43-.03-.83-.28-1.01-.7z" fill="#FFF"/>' +
